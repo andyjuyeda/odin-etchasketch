@@ -39,8 +39,15 @@ createGrid(16);
 const btn = document.querySelector(".resize-btn");
 btn.addEventListener("click", () => {
   let newGridSize = prompt("How many boxes tall/wide? (Max 100)");
-  createGrid(newGridSize);
+  newGridSize = parseInt(newGridSize); // convert the input to a number
+  if (isNaN(newGridSize) || newGridSize <= 0) {
+    alert("Please enter a valid number greater than 0");
+  } else {
+    newGridSize = Math.min(100, newGridSize); // if the input is greater than 100, set it to 100
+    createGrid(newGridSize);
+  }
 });
+
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
