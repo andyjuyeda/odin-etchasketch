@@ -1,15 +1,43 @@
+:root {
+    --grid-size: 900px;
+    --num-blocks : 16;
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+.btn-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px
+}
+
+button {
+    border: none;
+    background-color: #333;
+    width: 125px;
+    height: 30px;
+    border-radius: 6px;
+    color: white;
+}
+.grid-container {
+    width: var(--grid-size);
+    height: var(--grid-size);
+    border: 2px solid black;
+    margin: 25px auto;
+}
 .row-container {
     display: flex;
 }
 
 .block {
-    border: 2px solid black;
-    width: 30px;
-    height: 30px;
+    width: calc(var(--grid-size) / var(--num-blocks));
+    height: calc(var(--grid-size) / var(--num-blocks));
+}
+
+.block:hover {
+    background: red;
 }

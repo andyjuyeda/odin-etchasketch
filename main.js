@@ -10,10 +10,21 @@ function createRow(numberOfColumns) {
     container.appendChild(rowDiv);
 }
 
-function createGrid(gridSize) {
-    for (let i = 0; i < gridSize; i++) {
-        createRow(gridSize);
+function createGrid(numberOfBlocks) {
+    let rows = document.querySelectorAll('.row-container');
+    rows.forEach(row => {
+        row.remove();
+    });
+    document.documentElement.style.setProperty('--num-blocks', numberOfBlocks);
+    for (let i = 0; i < numberOfBlocks; i++) {
+        createRow(numberOfBlocks);
     }
 }
 
 createGrid(16);
+
+const btn = document.querySelector('.resize-btn');
+btn.addEventListener('click', () => {
+    let newGridSize = prompt("How many boxes tall/wide? (Max 100)");
+    createGrid(newGridSize);
+})
